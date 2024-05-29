@@ -136,3 +136,12 @@ Adding new GDL backbones is much easie. Follow the 2 steps to add a new GDL back
    - Specify necessary arguments. Users can check the meanings of the listed arguments in GESS/utils/args.py.
 
 ## Reference
+
+```
+@article{zou2023gdl,
+  title={GDL-DS: A Benchmark for Geometric Deep Learning under Distribution Shifts},
+  author={Zou, Deyu and Liu, Shikun and Miao, Siqi and Fung, Victor and Chang, Shiyu and Li, Pan},
+  journal={arXiv preprint arXiv:2310.08677},
+  year={2023}
+}
+```
