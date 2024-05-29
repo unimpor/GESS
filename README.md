@@ -20,7 +20,7 @@ We propose **GeSS**, a comprehensive benchmark designed for evaluating the perfo
 
 Besides the points mentioned in the Intro section of our paper, our benchmark has the following features:
 
-- **Easy-to-use**. As shown in `GESS.core.main:main`, GeSS provides simple APIs with only a few lines of codes to load necessary components like scientific datasets, GDL encoders, ML models, learning algorithms. It also provides a clear and unified pipeline for model training and evaluation processes. Quick using tutorials can be seen in the following sections.
+- **Easy-to-use**. As shown in `GESS.core.main:main`, GeSS provides simple APIs with only *a few lines of codes* to load necessary components like scientific datasets, GDL encoders, ML models, learning algorithms. It also provides a clear and unified pipeline for model training and evaluation processes. Quick using tutorials can be seen in the following sections.
 - **Easy-to-extend**. Besides serving as a package, GeSS is ready for further development. We apply a global `register` for unified GDL backbones, models, datasets, algorithms, and running pipelines access. Newly designed algorithms can be easily mounted to the global Register using just a Python decorator @. All you need is to inherit the base class and focus on the design of the novel component.
 - **Co-design of GDLs and learning algos**. Quick tutorials of how to add new GDL backbones and learning algorithms are shown in the following sections. With allowing co-design of GDLs and learning algos, this benchmark attempts to bridge the gap between the GDL and distribution-shift community.
 
@@ -103,19 +103,19 @@ Now we introduce the following 4 steps to add your new algorithm to this benchma
 1. **Build the ML model**.
 
    - In our benchmark, a learning algorithm calculates losses by manipulating various modules (including GDL, MLP or more) of the ML model. So it's important to build your ML model before algorithm implementation.
-   - If your algo does not need additional modules, using our `BaseModel` (GESS/models/models/base_model.py) is fine.
-   - If your algo requires additional modules, inherit `BaseModel` to specify a new one. Also you can add additional methods for specific needs of producing data. Refer to GESS/models/models/DIR_model.py for an example.
+   - If your algo does not need additional modules, using our `BaseModel` (*GESS/models/models/base_model.py*) is fine.
+   - If your algo requires additional modules, inherit `BaseModel` to specify a new one. Also you can add additional methods for specific needs of producing data. Refer to *GESS/models/models/DIR_model.py* for an example.
 2. **Build the learning algorithm**.
 
-   - In the GESS/algorithms/baselines folder, copy an algorithm file as a reference and rename it as as `new_algo.py`.
-   - Inherit the `BaseAlgo` class (GESS/algorithms/baselines/base_algo.py) to add new learning algorithms.
-   - Specify `self.setup_criterion()` method if the algo need specific criterion beyond default setup. Refer to GESS/algorithms/baselines/VREx.py for an example.
-   - Specify `self.setup_optimizer()` (used to setup optimizer) and `self.loss_backward()` (used to optimize loss objectives) method if the algo need specific optimization strategy beyond default setup. Refer to GESS/algorithms/baselines/DIR.py for an example.
+   - In the *GESS/algorithms/baselines* folder, copy an algorithm file as a reference and rename it as as `new_algo.py`.
+   - Inherit the `BaseAlgo` class (*GESS/algorithms/baselines/base_algo.py*) to add new learning algorithms.
+   - Specify `self.setup_criterion()` method if the algo need specific criterion beyond default setup. Refer to *GESS/algorithms/baselines/VREx.py* for an example.
+   - Specify `self.setup_optimizer()` (used to setup optimizer) and `self.loss_backward()` (used to optimize loss objectives) method if the algo need specific optimization strategy beyond default setup. Refer to *GESS/algorithms/baselines/DIR.py* for an example.
    - Specify `self.forward_pass()`, which is used to manipulate modules of `self.model` and produce losses.
 3. **Build the config file.**
 
-   - Suppose that you are proposing a new algorithm from NO-Info level and tries it in Track dataset, signal shift, and zp_10 case. In configs/core_config/Track/signal/zp_10/No-Info folder, copy a config file as a reference and rename it as as `new_algo.yaml`.
-   - Specify necessary arguments, including `alg_name` (the name of your algorithm), `model_name` (the name of your ML model, dafault: BaseModel), `coeff` (the main hyper-parameter you wish to tune), `extra` (other parameters used in your algos). Feel free to add more extra arguments in `extra`. Refer to  configs/core_config/Track/signal/zp_10/No-Info/LRI.yaml as an example.
+   - Suppose that you are proposing a new algorithm from NO-Info level and tries it in Track dataset, signal shift, and zp_10 case. In *configs/core_config/Track/signal/zp_10/No-Info* folder, copy a config file as a reference and rename it as as `new_algo.yaml`.
+   - Specify necessary arguments, including `alg_name` (the name of your algorithm), `model_name` (the name of your ML model, dafault: BaseModel), `coeff` (the main hyper-parameter you wish to tune), `extra` (other parameters used in your algos). Feel free to add more extra arguments in `extra`. Refer to  *configs/core_config/Track/signal/zp_10/No-Info/LRI.yaml* as an example.
 4. **Run the new algorithm**.
    
    - In this step, all you need is to run commands as mentioned above, `gess-run --config_path Track/signal/zp_10/No-Info/new_algo.yaml --gdl egnn`.
@@ -126,14 +126,14 @@ Adding new GDL backbones is much easie. Follow the 2 steps to add a new GDL back
 
 1. **Build new GDL layers**.
 
-   - In the GESS/models/backbones folder, copy an GDL file as a reference and rename it as as `new_gdl.py`.
-   - Inherit the `BaseGDLEncoder` class (GESS/models/backbones/base_backbone.py) to add new GDL backbone.
+   - In the *GESS/models/backbones* folder, copy an GDL file as a reference and rename it as as `new_gdl.py`.
+   - Inherit the `BaseGDLEncoder` class (*GESS/models/backbones/base_backbone.py*) to add new GDL backbone.
    - We have unified the setup of GDL backbone, all you need is to specify your own GDL layer and add it to `self.convs` in `self.__init__()`.
-   - Note: Please ensure that the forward method of your custom GDL layer follows a consistent order of parameters with other GDL setups. Check details in base_backbone.py.
+   - Note: Please ensure that the forward method of your custom GDL layer follows a consistent order of parameters with other GDL setups. Check details in *base_backbone.py*.
 2. **Build the config file.**
 
-   - In configs/backbone_config folder, copy a config file as a reference and rename it as as `new_gdl.yaml`.
-   - Specify necessary arguments. Users can check the meanings of the listed arguments in GESS/utils/args.py.
+   - In *configs/backbone_config* folder, copy a config file as a reference and rename it as as `new_gdl.yaml`.
+   - Specify necessary arguments. Users can check the meanings of the listed arguments in *GESS/utils/args.py*.
 
 ## Reference
 
