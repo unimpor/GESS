@@ -5,7 +5,12 @@ This repository contains the official implementation of GeSS as described in the
 
 ## Table of Contents
 
-[TOC]
+* [Overview](#overview)
+* [Features](#Features)
+* [Dataset Introduction](#Dataset Introduction)
+* [Installation](#Installation)
+* [Quick Tutorial -- Reproducing Results](#Quick Tutorial -- Reproducing Results)
+* [Quick Tutorial -- Adding new components to extend this benchmark](#Quick Tutorial -- Adding new components to extend this benchmark)
 
 ## Overview
 
