@@ -49,10 +49,10 @@ conda create --name GESS python=3.9 -y
 conda activate GESS
 ```
 
-Step 3: **PyTorch 1.12.1, PyG 2.2.0**
+Step 3: **PyTorch 1.12.1, PyG 2.2.0, CUDA 11.3**
 
 ```
-conda install -y pytorch==1.12.1 torchvision cudatoolkit=11.3 -c pytorch
+conda install -y pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1  cudatoolkit=11.3 -c pytorch
 pip install torch-scatter==2.1.0 torch-sparse==0.6.16 torch-cluster==1.6.0 torch-geometric==2.2.0 -f https://data.pyg.org/whl/torch-1.12.0+cu113.html
 ```
 
