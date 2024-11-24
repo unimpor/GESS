@@ -1,6 +1,8 @@
 # GeSS: Benchmarking Geometric Deep Learning under Scientific Applications with Distribution Shifts
 
-This repository contains the official implementation of GeSS as described in the paper (under review of NeurIPS 2024 Datasets and Benchmarks Track)
+**NEWS.** Our paper *GeSS: Benchmarking Geometric Deep Learning under Scientific Applications with Distribution Shifts*, has been accepted at **NeurIPS 2024 Track on Datasets and Benchmarks** as a poster! 🎉 Thanks for all authors!
+
+This repository contains the official implementation of GeSS as described in the [paper](https://arxiv.org/pdf/2310.08677v2)
 *GeSS: Benchmarking Geometric Deep Learning under Scientific Applications with Distribution Shifts* by Deyu Zou, Shikun Liu, Siqi Miao, Victor Fung, Shiyu Chang, and Pan Li.
 
 ## Table of Contents
